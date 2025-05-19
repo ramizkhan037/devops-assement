@@ -1,0 +1,16 @@
+architecture: replication
+primary:
+  persistence:
+    enabled: true
+    size: 8Gi
+secondary:
+  replicaCount: 2
+  persistence:
+    enabled: true
+    size: 8Gi
+auth:
+  rootPassword: my-secret-root-pw
+  database: clientlogdb
+  username: logger
+  password: logger-pw
+
