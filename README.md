@@ -7,7 +7,7 @@ curl -sfL https://get.k3s.io | \
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 2. Deploy MySQL Cluster (Helm)
-   *Create namespace
+   *Create namespace*
 kubectl create namespace db
 ***Prepare *mysql-values.****************************yaml**** (already in repo)
 helm repo add bitnami https://charts.bitnami.com/bitnami
