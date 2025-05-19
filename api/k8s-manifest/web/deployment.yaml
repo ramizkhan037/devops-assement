@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-logger
+  namespace: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ip-logger
+  template:
+    metadata:
+      labels:
+        app: ip-logger
+    spec:
+      containers:
+      - name: api
+        image: ramiz037/ip-logger:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DB_HOST
+          value: mysql-cluster-primary.db.svc.cluster.local
+        - name: DB_USER
+          value: logger
+        - name: DB_PASS
+          value: logger-pw
+        - name: DB_NAME
+          value: clientlogdb
+        ports:
+        - containerPort: 5000
+
