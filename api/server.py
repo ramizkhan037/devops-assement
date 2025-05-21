@@ -15,7 +15,12 @@ def get_db():
 
 @app.route('/log-ip', methods=['POST'])
 def log_ip():
-    ip = request.remote_addr
+     client_ip = (
+        request.headers.get("X-Forwarded-For", request.remote_addr)
+        .split(",")[0]
+        .strip()
+    )
+
     conn = get_db(); cur = conn.cursor()
     cur.execute("""
       CREATE TABLE IF NOT EXISTS ip_logs (
