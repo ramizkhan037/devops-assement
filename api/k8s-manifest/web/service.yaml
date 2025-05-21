@@ -5,6 +5,7 @@ metadata:
   namespace: web
 spec:
   type: NodePort
+  externalTrafficPolicy: Local
   selector: { app: ip-logger }
   ports:
   - port: 5000
